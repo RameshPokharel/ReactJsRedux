@@ -3,6 +3,7 @@ import { increment, decrement } from './actrions/UserActions.js'
 import loggedReducer from './reducer/loggedReducer.js'
 import countReducer from './reducer/couter.js'
 import { Provider } from 'react-redux'
+import Dashboard from './dashboard.js'
 //create Store
 let allReducer = combineReducers({
   count: countReducer,
@@ -26,6 +27,7 @@ function App() {
   return (
     <Provider store={store}>
       <div>hello</div>
+      <Dashboard />
     </Provider>
   )
 }
