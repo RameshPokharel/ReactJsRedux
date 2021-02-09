@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { createStore, combineReducers } from 'redux'
+import { increment, decrement } from './actrions/UserActions.js'
+import loggedReducer from './reducer/loggedReducer.js'
+import countReducer from './reducer/couter.js'
+import { Provider } from 'react-redux'
+//create Store
+let allReducer = combineReducers({
+  count: countReducer,
+  isLogged: loggedReducer,
+})
 
+let store = createStore(
+  allReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+//dispatch
+
+store.dispatch(increment())
+store.dispatch(increment())
+store.dispatch(increment())
+store.dispatch(decrement())
+
+console.log(store.getState())
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Provider store={store}>
+      <div>hello</div>
+    </Provider>
+  )
 }
 
-export default App;
+export default App
