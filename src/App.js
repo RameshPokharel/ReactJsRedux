@@ -1,9 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
-import {
-  increment,
-  decrement,
-  IncrementFromThunk,
-} from './actrions/UserActions.js'
+import React from 'react'
 import loggedReducer from './reducer/loggedReducer.js'
 import countReducer from './reducer/couter.js'
 import { Provider } from 'react-redux'
@@ -20,13 +16,15 @@ const store = createStore(allReducer, composeEnhancers(applyMiddleware(thunk)))
 //dispatch
 
 console.log(store.getState())
-function App() {
-  return (
-    <Provider store={store}>
-      <div>hello</div>
-      <Dashboard />
-    </Provider>
-  )
+class AppClass extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <div>hello</div>
+        <Dashboard />
+      </Provider>
+    )
+  }
 }
 
-export default App
+export default AppClass
