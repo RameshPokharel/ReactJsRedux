@@ -1,6 +1,7 @@
 import { dispatch } from 'redux'
-import { increment } from '../actrions/UserActions'
+import { increment, SignIn } from '../actrions/UserActions'
 export const incrementWithThunk = () => async (dispatch, getState) => {
+  dispatch(SignIn(true))
   const counter = getState().counter
   var promise = new Promise((resolve, reject) => {
     let c = counter + 1
