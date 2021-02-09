@@ -6,3 +6,6 @@ export const increment = () => {
 export const decrement = () => {
   return { type: 'DECREMENT' }
 }
+export const IncrementFromThunk = () => {
+  return { type: 'IncrementFromThunk' }
+}

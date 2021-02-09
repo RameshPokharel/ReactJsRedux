@@ -1,5 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from './actrions/UserActions'
+import {
+  decrement,
+  increment,
+  IncrementFromThunk,
+} from './actrions/UserActions'
+import { incrementWithThunk } from './thunk/MyThunk.js'
+
 const Dashboard = () => {
   const count = useSelector((state) => state.count)
   const dispatch = useDispatch()
@@ -8,7 +14,8 @@ const Dashboard = () => {
       <p>Curret Count: {count}</p>
       <button
         onClick={() => {
-          dispatch(increment())
+          dispatch(incrementWithThunk())
+          //dispatch(increment())
         }}
       >
         Increment
